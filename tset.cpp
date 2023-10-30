@@ -140,7 +140,7 @@ TSet TSet::operator~(void) // дополнение
 istream &operator>>(istream &istr, TSet &s) // ввод
 {
     const int mp = s.MaxPower;
-    for (int i = 0; i <= mp; ++i)
+    for (int i = 0; i < mp; ++i)
     {
         int val; istr >> val;
         s.InsElem(val);
@@ -151,9 +151,10 @@ istream &operator>>(istream &istr, TSet &s) // ввод
 ostream& operator<<(ostream &ostr, const TSet &s) // вывод
 {
     const int mp = s.MaxPower;
-    for (int i = 0; i <= mp; ++i)
+    for (int i = 0; i < mp; ++i)
     {
-        ostr << s.IsMember(i) << " ";
+        if(s.IsMember(i))
+            ostr << i << " ";
     }
     return ostr;
 }
