@@ -151,10 +151,12 @@ istream &operator>>(istream &istr, TSet &s) // ввод
 ostream& operator<<(ostream &ostr, const TSet &s) // вывод
 {
     const int mp = s.MaxPower;
-    for (int i = 0; i < mp; ++i)
+    for (size_t i = 0; i < mp; ++i)
     {
-        if(s.IsMember(i))
-            ostr << i << " ";
+        if (s.BitField.GetBit(i))
+            ostr << i;
+        if (i + 1 < s.MaxPower) 
+            ostr << " ";
     }
     return ostr;
 }
