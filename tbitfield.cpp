@@ -87,9 +87,10 @@ void TBitField::ClrBit(const int n) // очистить бит
 
 int TBitField::GetBit(const int n) const // получить значение бита
 {
-	if ((n > -1) || (n < BitLen))
+	if (n < 0 || n >= BitLen)
+		throw ("n < 0 || n >= BitLen (in GetBit)");
+	else 
 		return (pMem[GetMemIndex(n)] & GetMemMask(n)) == 0 ? 0 : 1;
-	else throw ("The number is out of the bit field");
 }
 
 // битовые операции
